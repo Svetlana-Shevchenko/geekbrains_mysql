@@ -22,7 +22,7 @@ mysql> show databases;
 
 mysql> use example;
 Database changed
-mysql> create table users ( id int, name varchar(100));
+mysql> create table users ( id int, name text);
 Query OK, 0 rows affected (0,04 sec)
 
 mysql> show tables;
