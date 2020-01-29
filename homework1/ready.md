@@ -1,0 +1,59 @@
+svetlana@svetlana-VirtualBox:~$ cat ~/.my.cnf 
+[mysql]
+user=root
+password=password
+
+
+mysql> create database example;
+Query OK, 1 row affected (0,04 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| example            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0,00 sec)
+
+
+mysql> use example;
+Database changed
+mysql> create table users ( id int, name varchar(100));
+Query OK, 0 rows affected (0,04 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_example |
++-------------------+
+| users             |
++-------------------+
+1 row in set (0,01 sec)
+
+
+svetlana@svetlana-VirtualBox:~$ mysqldump -u root -p example users > users_dump.sql
+svetlana@svetlana-VirtualBox:~$ mysql -u root -p --execute "create database sample;"
+Enter password: 
+svetlana@svetlana-VirtualBox:~$ mysql -u root -p sample < users_dump.sql 
+Enter password: 
+svetlana@svetlana-VirtualBox:~$ mysql -u root -p --execute "show databases;"
+Enter password: 
++--------------------+
+| Database           |
++--------------------+
+| example            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sample             |
+| sys                |
++--------------------+
+
+
+
+svetlana@svetlana-VirtualBox:~$ mysqldump -u root -p mysql help_keyword --where "1 limit 100" > dump2.sql
+
+
