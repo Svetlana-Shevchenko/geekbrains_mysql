@@ -69,9 +69,6 @@ mysql root@localhost:shop2> CREATE TABLE cities (
 Query OK, 0 rows affected
 Time: 0.063s
 
-
-# задание 4
-
 mysql root@localhost:shop2> INSERT INTO flights (from_target, to_target) VALUES ( 'MSK', 'CDG' );
 Query OK, 1 row affected
 Time: 0.015s
