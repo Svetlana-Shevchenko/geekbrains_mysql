@@ -1,1 +1,54 @@
+# 2 задание
+mysql root@localhost:vk> SELECT COUNT(*) from likes 
+                      -> 	WHERE target_id IN (
+                      -> 		SELECT user_id FROM (
+                      -> 			SELECT user_id, TIMESTAMPDIFF(YEAR, birthdate, NOW()) as age
+                      -> 		FROM profiles
+                      ->			ORDER BY age asc LIMIT 10)
+                      -> 		as top_likes)
+                      -> ;
++------------+
+|   COUNT(*) |
+|------------|
+|          7 |
++------------+
+1 row in set
+Time: 0.003s
+
+
+# 3 задание
+
+mysql root@localhost:vk> SELECT (
+                      ->     SELECT COUNT(user_id) FROM likes WHERE target_id IN ( 
+                      ->         SELECT user_id FROM profiles WHERE sex = 'f')
+                      ->     ) AS female_count, (
+                      ->     SELECT COUNT(user_id) FROM profiles WHERE sex = 'm')
+                      ->      AS male_count; 
++----------------+--------------+
+|   female_count |   male_count |
+|----------------+--------------|
+|             56 |           48 |
++----------------+--------------+
+1 row in set
+Time: 0.002s
+
+# 4 задание
+
+mysql root@localhost:vk> SELECT user_id, COUNT(user_id) as activity FROM likes GROUP BY user_id order by activity LIMIT 10;
++-----------+------------+
+|   user_id |   activity |
+|-----------+------------|
+|        42 |          1 |
+|        62 |          1 |
+|        82 |          1 |
+|        43 |          1 |
+|        81 |          1 |
+|       100 |          1 |
+|        48 |          1 |
+|        99 |          1 |
+|        60 |          1 |
+|        20 |          1 |
++-----------+------------+
+10 rows in set
+Time: 0.003s
 
