@@ -1,4 +1,6 @@
+-- Прщшу прощения за задержку. Была очень большая нагрузка на работе ((
 -- 1 Задание
+
 mysql root@localhost:vk> CREATE INDEX profiles_birthdate_idx ON profiles(birthdate);
                       -> CREATE INDEX likes_target_id_idx ON likes(target_id);
 Query OK, 0 rows affected
